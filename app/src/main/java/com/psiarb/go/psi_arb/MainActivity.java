@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import static android.widget.Toast.LENGTH_LONG;
@@ -22,14 +21,20 @@ public class MainActivity extends AppCompatActivity {
     TextView text;
     Button btn;
     SymbolBidAskRates Rate;
-    double bid1 = 0;
-    double ask1 = 0;
-    double ETHBTCb_Poloniex = 0;
-    double ETHBTCa_Poloniex = 0;
-    double ETHBTCb_CEXio = 0;
-    double ETHBTCa_CEXio = 0;
-    double ETHBTCb_Binance = 0;
-    double ETHBTCa_Binance = 0;
+    private double bid1 = 0;
+    private double ask1 = 0;
+    private double ETHBTCb_Poloniex = 0;
+    private double ETHBTCa_Poloniex = 0;
+    private double ETHBTCb_CEXio = 0;
+    private double ETHBTCa_CEXio = 0;
+    private double ETHBTCb_Binance = 0;
+    private double ETHBTCa_Binance = 0;
+    private double ETHBTCb_Kraken =0;
+    private double ETHBTCa_Kraken =0;
+    private double ETHBTCb_Bitfinex =0;
+    private double ETHBTCa_Bitfinex =0;
+    private double ETHBTCb_GDAX =0;
+    private double ETHBTCa_GDAX=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,12 +69,8 @@ public class MainActivity extends AppCompatActivity {
 
                 Document doc = Jsoup.connect("https://www.investing.com/currencies/eth-btc").get();
                 Elements span = doc.select("span");
-
-                for(Element step : span){
-
-                    String method = step.select("span").text();
-                    buffer.append(method);
-                }
+                String method = span.select("span").text();
+                buffer.append(method);
 
                 String haystack = buffer.toString();
                 calculateBIDASK ETHBTCpoloniex = new calculateBIDASK();
@@ -87,12 +88,8 @@ public class MainActivity extends AppCompatActivity {
 
                 buffer.delete(0,buffer.length());
 
-                for(Element step : span){
-
-                    String method = step.select("span").text();
-                    buffer.append(method);
-
-                }
+                method = span.select("span").text();
+                buffer.append(method);
 
                 haystack = buffer.toString();
 
@@ -111,12 +108,8 @@ public class MainActivity extends AppCompatActivity {
 
                 buffer.delete(0,buffer.length());
 
-                for(Element step : span){
-
-                    String method = step.select("span").text();
-                    buffer.append(method);
-
-                }
+                method = span.select("span").text();
+                buffer.append(method);
 
                 haystack = buffer.toString();
 
@@ -130,10 +123,63 @@ public class MainActivity extends AppCompatActivity {
 
                 System.out.println("OK");
 
-                doc = Jsoup.connect("https://www.investing.com/currencies/eth-btc?cid=1031692").get();
+                doc = Jsoup.connect("https://www.investing.com/currencies/eth-btc?cid=1010786").get();
                 span = doc.select("span");
 
+                buffer.delete(0,buffer.length());
 
+                method = span.select("span").text();
+                buffer.append(method);
+
+                haystack = buffer.toString();
+
+                calculateBIDASK ETHBTCkraken = new calculateBIDASK();
+
+                ETHBTCb_Kraken = ETHBTCkraken.getBid(bid1,haystack);
+                ETHBTCa_Kraken = ETHBTCkraken.getAsk(ask1,haystack);
+
+                Rate.setEURBTCb_Kraken(ETHBTCb_Kraken);
+                Rate.setEURBTCa_Kraken(ETHBTCa_Kraken);
+
+                System.out.println("OK");
+
+                doc = Jsoup.connect("https://www.investing.com/currencies/eth-btc?cid=1001806").get();
+                span = doc.select("span");
+
+                buffer.delete(0,buffer.length());
+
+                method = span.select("span").text();
+                buffer.append(method);
+
+                haystack = buffer.toString();
+
+                calculateBIDASK ETHBTCbitfinex = new calculateBIDASK();
+
+                ETHBTCb_Bitfinex = ETHBTCbitfinex.getBid(bid1,haystack);
+                ETHBTCa_Bitfinex = ETHBTCbitfinex.getAsk(ask1,haystack);
+
+                Rate.setEURBTCb_Bitfinex(ETHBTCb_Bitfinex);
+                Rate.setEURBTCa_Bitfinex(ETHBTCa_Bitfinex);
+
+                System.out.println("OK");
+
+                doc = Jsoup.connect("https://www.investing.com/currencies/eth-btc?cid=1010799").get();
+                span = doc.select("span");
+
+                buffer.delete(0,buffer.length());
+
+                method = span.select("span").text();
+                buffer.append(method);
+
+                haystack = buffer.toString();
+
+                calculateBIDASK ETHBTCgdax = new calculateBIDASK();
+
+                ETHBTCb_GDAX = ETHBTCgdax.getBid(bid1,haystack);
+                ETHBTCa_GDAX = ETHBTCgdax.getAsk(ask1,haystack);
+
+                Rate.setEURBTCb_GDAX(ETHBTCb_GDAX);
+                Rate.setEURBTCa_GDAX(ETHBTCa_GDAX);
 
             }catch(Exception e){e.printStackTrace();}
 
@@ -154,7 +200,10 @@ public class MainActivity extends AppCompatActivity {
 
             text.setText("BID: " + Rate.getEURBTCb_Poloniex() + "\nASK: " + Rate.getEURBTCa_Poloniex() + "\t Poloniex\n"
                     + "BID: " + Rate.getEURBTCb_CEXio() + "\nASK: " + Rate.getEURBTCa_CEXio() + "\t CEX.io\n"
-                    + "BID: " + Rate.getEURBTCb_Binance() + "\nASK: " + Rate.getEURBTCa_Binance() + "\t 	Binance"
+                    + "BID: " + Rate.getEURBTCb_Binance() + "\nASK: " + Rate.getEURBTCa_Binance() + "\t 	Binance\n"
+                    + "BID: " + Rate.getEURBTCb_Kraken() + "\nASK: " + Rate.getEURBTCa_Kraken() + "\t 	Kraken\n"
+                    + "BID: " + Rate.getEURBTCb_Bitfinex() + "\nASK: " + Rate.getEURBTCa_Bitfinex() + "\t 	Bitfinex\n"
+                    + "BID: " + Rate.getEURBTCb_GDAX() + "\nASK: " + Rate.getEURBTCa_GDAX() + "\t 	GDAX\n"
             );
 
             Toast.makeText(getApplicationContext(),"OK", LENGTH_LONG).show();
