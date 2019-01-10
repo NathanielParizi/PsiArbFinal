@@ -20,6 +20,5 @@ offers many profitable arbitrage opportunities.
 In order to successfully trade
 triangular arbitrage in the cryptocurrency market, it is ideal to automate
 order execution due to time constraints of arbitrage spreads staying open.
-The average triangular arbitrage spread is 0.1% profit for a 30 minute roundtrip trade.
-
+The average triangular arbitrage spread is 0.1% profit.
 
