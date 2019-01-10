@@ -14,7 +14,7 @@ market.
 
 In practice, triangular arbitrage is unprofitable in the foreign currency market
 due to the market's efficiency in pricing. However since there are many different
-cryptocurrency exchanges, this given market tends to less efficient and therefor
+cryptocurrency exchanges, this given market tends to be less efficient and therefor
 offers many profitable arbitrage opportunities.
 
 In order to successfully trade
