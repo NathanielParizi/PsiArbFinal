@@ -1,11 +1,11 @@
 # PsiArbFinal
-Triangular arbitrage scanner for digital currency market.
+Triangular arbitrage scanner for the digital currency market.
 
 Triangular arbitrage is a sequence of transactions buying and selling
 currencies in an attempt to gain a profit between the mispricing of
 three separate exchange rates. For example, It should follow that: 
 
-            EURUSD * USDJPY != EURJPY 
+            EUR/USD * USD/JPY != EUR/JPY 
            
 Then there would be an arbitrage profit opportunity available. This
 application gathered bid/ask prices from Investing.com to perform
