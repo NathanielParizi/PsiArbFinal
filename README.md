@@ -5,7 +5,7 @@ Triangular arbitrage is a sequence of transactions buying and selling
 currencies in an attempt to gain a profit between the mispricing of
 three separate exchange rates. For example, It should follow that: 
 
-            EUR/USD * USD/JPY != EUR/JPY 
+            ETH/BTC * BTC/USD != ETH/USD 
            
 Then there would be an arbitrage profit opportunity available. This
 application gathered bid/ask prices from Investing.com to perform
