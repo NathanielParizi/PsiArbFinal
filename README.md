@@ -7,7 +7,7 @@ three separate exchange rates. For example, It should follow that:
 
             ETH/BTC * BTC/USD != ETH/USD 
            
-If the following discrepancy is satisfied then there would be a prevailing
+If this given discrepancy on exchange is satisfied then there would be a prevailing
 arbitrage profit opportunity available. This application gathered bid/ask
 prices from Investing.com to perform the needed caluclations across various 
 digital assets in the cryptocurrency market.
