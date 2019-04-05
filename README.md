@@ -7,10 +7,10 @@ three separate exchange rates. For example, It should follow that:
 
             ETH/BTC * BTC/USD != ETH/USD 
            
-Then there would be an arbitrage profit opportunity available. This
-application gathered bid/ask prices from Investing.com to perform
-the needed caluclations across various digital assets in the cryptocurrency
-market.
+If the following discrepancy is satisfied then there would be a prevailing
+arbitrage profit opportunity available. This application gathered bid/ask
+prices from Investing.com to perform the needed caluclations across various 
+digital assets in the cryptocurrency market.
 
 In practice, triangular arbitrage is unprofitable in the foreign currency market
 due to the market's efficiency in pricing. However since there are many different
